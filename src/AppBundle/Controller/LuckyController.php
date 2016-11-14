@@ -13,11 +13,12 @@ class LuckyController extends Controller
      */
     public function numberAction($number)
     {
-        // $number = mt_rand(0, 100);
-
-        return $this->render('lucky/number.html.twig', array(
-            'number' => $number,
-        ));
+        if(is_numeric($number))
+            return $this->render('lucky/number.html.twig', array(
+                'number' => $number,
+            ));
+        else
+            return $this->redirectToRoute('lucky_number_generate');
     }
 
     /**
